@@ -1,6 +1,6 @@
 <launch>
     <!-- Map Server -->
-    <arg name="map_file" default="$(find my_robot)/maps/map_revised.yaml"/>
+    <arg name="map_file" default="$(find my_robot)/maps/map.yaml"/>
     <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)"/>
 
     <!-- AMCL Node -->
@@ -14,9 +14,11 @@
         <param name="global_frame_id" value="map"/>
         <param name="transform_tolerance" value="0.5"/>
 
-        <!-- Initial estimate -->
-        <param name="initial_pose_x" value="4.26"/>
-        <param name="initial_pose_y" value="-3.79"/>
+        <!-- Initial distribution -->
+        <param name="initial_pose_x" value="0"/>
+        <param name="initial_pose_y" value="0"/>
+        <param name="initial_cov_xx" value="25"/>
+        <param name="initial_cov_yy" value="25"/>
     </node>
 
     <!-- Move Base Node -->
